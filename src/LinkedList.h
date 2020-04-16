@@ -1,10 +1,3 @@
-/*
- * LinkedList.h
- *
- *  Created on: 14 Apr 2020
- *      Author: lr
- */
-
 #ifndef LINKEDLIST_H_
 #define LINKEDLIST_H_
 
@@ -13,10 +6,10 @@
 class LinkedList {
 public:
 	Node* head;
-	LinkedList(float* data);
+	LinkedList(float* data, int size);
   LinkedList();
-	void append(float* data);
-	void prepend(float* data);
+	void append(float* data, int size);
+	void prepend(float* data, int size);
 	void readout();
 	void popFront();
 	void popBack();

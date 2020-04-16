@@ -7,9 +7,9 @@
 
 #include "LinkedList.h"
 
-LinkedList::LinkedList(float* data) {
+LinkedList::LinkedList(float* data, int size) {
 
-	LinkedList::head = new Node(data);
+	LinkedList::head = new Node(data, size);
 
 }
 
@@ -19,11 +19,10 @@ LinkedList::LinkedList() {
 
 }
 
-void LinkedList::append(float* data) {
+void LinkedList::append(float* data, int size) {
 
 	if (head == nullptr) {
-
-		head = new Node(data);
+		head = new Node(data, size);
 		return;
 	}
 
@@ -31,12 +30,12 @@ void LinkedList::append(float* data) {
 	while (current->next != nullptr) {
 		current = current->next;
 	}
-	current->next = new Node(data);
+	current->next = new Node(data, size);
 }
 
-void LinkedList::prepend(float* data) {
+void LinkedList::prepend(float* data, int size) {
 
-	Node* newHead = new Node(data);
+	Node* newHead = new Node(data, size);
 	newHead->next = head;
 	head = newHead;
 
@@ -47,10 +46,9 @@ void LinkedList::popFront() {
 	if (head == nullptr) {
 		return;
 	}
+
 	Node* oldHead = head;
-
 	head = head->next;
-
 	delete oldHead;
 
 }
@@ -61,7 +59,8 @@ void LinkedList::popBack() {
 		return;
 	}
 
-	Node* current = head;
+	Node* current = head;	
+
 	if (current->next == nullptr) {
 		head = nullptr;
 		return;
@@ -75,7 +74,6 @@ void LinkedList::popBack() {
 	}
 
 	lastNode->next = nullptr;
-
 	delete current;
 
 }
@@ -87,16 +85,15 @@ int LinkedList::getSize() {
 		return 0;
 	}
 
-	int k =0;
+	int size = 0;
 	Node* current = head;
+
 	do {
-
 		current = current->next;
-		k ++;
-
+		size ++;
 	} while (current != nullptr);
 
-	return k;
+	return size;
 
 }
 

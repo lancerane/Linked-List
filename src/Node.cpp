@@ -1,15 +1,12 @@
-/*
- * Node.cpp
- *
- *  Created on: 14 Apr 2020
- *      Author: LR
- */
-
 #include "Node.h"
 
-Node::Node(float* data) {
+Node::Node(float* data_in, int size) {
 
-	Node::data = data;
+	data = new float[size];
+	for (int i(0); i < size; i++) {
+    this->data[i] = data_in[i];
+  }
+
 	Node::next = nullptr;
 
 }
@@ -20,4 +17,7 @@ Node::Node() {
 
 }
 
+Node::~Node() {
+  delete[] data;
+}
 
