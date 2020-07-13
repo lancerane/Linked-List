@@ -4,13 +4,16 @@
 
 class Node {
 public:
+	Node(): next(nullptr) {};
+	Node(float* data, int size);
+    Node(float* data, int size, const bool predictRight); // specialised node to deal with varying pred side
+	~Node();
+
 	Node* next;
+    Node* prev; // for compatibility with a DLL
 	float* data;
 
-	Node();
-	Node(float* data, int size);
-	virtual ~Node();
-
+  
 };
 
 #endif /* NODE_H_ */
